@@ -26,7 +26,7 @@
 	<groupId>com.mgmtp.maven.poms</groupId>
 	<artifactId>mgm-oss-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1</version>
+	<version>2-SNAPSHOT</version>
 	<name>mgm Maven OSS Parent POM</name>
 	<description>mgm Maven OSS Parent POM</description>
 
@@ -41,7 +41,7 @@
 		<connection>scm:git:git://github.com/mgm-tp/mgm-oss-parent.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/mgm-tp/mgm-oss-parent.git</developerConnection>
 		<url>https://github.com/mgm-tp/mgm-oss-parent</url>
-		<tag>mgm-oss-parent-1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
