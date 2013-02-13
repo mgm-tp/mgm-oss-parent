@@ -31,8 +31,8 @@
 	<description>mgm Maven OSS Parent POM</description>
 
 	<organization>
-		<name>${org.name}</name>
-		<url>${org.url}</url>
+		<name>mgm technology partners GmbH</name>
+		<url>http://www.mgm-tp.com</url>
 	</organization>
 
 	<url>https://github.com/mgm-tp/mgm-oss-parent</url>
@@ -65,16 +65,16 @@
 			<id>rnaegele</id>
 			<name>Reinhard Nägele</name>
 			<email>Reinhard.Naegele@mgm-tp.com</email>
-			<organization>${org.name}</organization>
-			<organizationUrl>${org.url}</organizationUrl>
+			<organization>mgm technology partners GmbH</organization>
+			<organizationUrl>http://www.mgm-tp.com</organizationUrl>
 			<timezone>Europe/Berlin</timezone>
 		</developer>
 		<developer>
 			<id>mvarendo</id>
 			<name>Martin Varendorff</name>
 			<email>Martin.Varendorff@mgm-tp.com</email>
-			<organization>${org.name}</organization>
-			<organizationUrl>${org.url}</organizationUrl>
+			<organization>mgm technology partners GmbH</organization>
+			<organizationUrl>http://www.mgm-tp.com</organizationUrl>
 			<timezone>Europe/Berlin</timezone>
 		</developer>
 	</developers>
@@ -101,6 +101,8 @@
 						<mapping>
 							<java>SLASHSTAR_STYLE</java>
 							<groovy>SLASHSTAR_STYLE</groovy>
+							<gant>SLASHSTAR_STYLE</gant>
+							<props>SCRIPT_STYLE</props>
 						</mapping>
 					</configuration>
 				</plugin>
@@ -220,6 +222,10 @@
 								<Implementation-Revision>${revision}</Implementation-Revision>
 							</manifestEntries>
 						</archive>
+						<links>
+							<link>http://docs.oracle.com/javase/6/docs/api/</link>
+						</links>
+						<bottom><![CDATA[Copyright (c) 2013 mgm technology partners GmbH]]></bottom>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -299,7 +305,7 @@
 				<configuration>
 					<buildNumberPropertyName>revision</buildNumberPropertyName>
 					<timestampPropertyName>timestamp</timestampPropertyName>
-					<timestampFormat>{0,date,yyyyMMdd-HHmm}</timestampFormat>
+					<timestampFormat>{0,date,yyyy-MM-dd'T'HH:mm:ssZZ}</timestampFormat>
 					<getRevisionOnlyOnce>true</getRevisionOnlyOnce>
 				</configuration>
 				<executions>
@@ -505,8 +511,6 @@
 	</profiles>
 
 	<properties>
-		<org.name>mgm technology partners GmbH</org.name>
-		<org.url>http://www.mgm-tp.com</org.url>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jacoco.version>0.6.1.201212231917</jacoco.version>
