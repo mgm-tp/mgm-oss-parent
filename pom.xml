@@ -62,7 +62,7 @@
 
 	<developers>
 		<developer>
-			<id>rnaegele</id>
+			<id>unguiculus</id>
 			<name>Reinhard Nägele</name>
 			<email>Reinhard.Naegele@mgm-tp.com</email>
 			<organization>mgm technology partners GmbH</organization>
@@ -210,7 +210,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.9</version>
+					<version>${javadoc.plugin.version}</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -258,7 +258,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>2.2.1</version>
+					<version>${source.plugin.version}</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -401,6 +401,27 @@
 
 	<profiles>
 		<profile>
+			<!-- 
+				Override plugin versions of Sonatype profile. This needs to be done 
+				here because profiles are not inherited. 
+			-->
+			<id>sonatype-oss-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>${source.plugin.version}</version>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>${javadoc.plugin.version}</version>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>attachSources</id>
 			<build>
 				<plugins>
@@ -514,5 +535,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jacoco.version>0.6.1.201212231917</jacoco.version>
+		<source.plugin.version>2.2.1</source.plugin.version>
+		<javadoc.plugin.version>2.9</javadoc.plugin.version>
 	</properties>
 </project>
