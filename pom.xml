@@ -366,7 +366,7 @@
 				</executions>
 				<configuration>
 					<resourceBundles>
-						<resourceBundle>com.mgmtp.maven.resources:mgm-oss-jar-resource-bundle:1</resourceBundle>
+						<resourceBundle>com.mgmtp.maven.resources:mgm-oss-jar-resource-bundle:${mgm-oss-jar-resource-bundle.version}</resourceBundle>
 					</resourceBundles>
 				</configuration>
 			</plugin>
@@ -537,5 +537,6 @@
 		<jacoco.version>0.6.1.201212231917</jacoco.version>
 		<source.plugin.version>2.2.1</source.plugin.version>
 		<javadoc.plugin.version>2.9</javadoc.plugin.version>
+		<mgm-oss-jar-resource-bundle.version>2</mgm-oss-jar-resource-bundle.version>
 	</properties>
 </project>
