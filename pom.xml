@@ -97,6 +97,10 @@
 						<excludes>
 							<exclude>**/*.txt</exclude>
 							<exclude>.maven/**</exclude>
+							<exclude>README.md</exclude>
+							<exclude>LICENSE</exclude>
+							<exclude>NOTICE</exclude>
+							<exclude>**/*.log</exclude>
 						</excludes>
 						<mapping>
 							<java>SLASHSTAR_STYLE</java>
