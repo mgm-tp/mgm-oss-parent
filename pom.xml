@@ -46,12 +46,12 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>${snapshotRepoId}</id>
+			<id>${repoId}</id>
 			<name>snapshots</name>
 			<url>${snapshotRepoUrl}</url>
 		</snapshotRepository>
 		<repository>
-			<id>${releaseRepoId}</id>
+			<id>${repoId}</id>
 			<name>releases</name>
 			<url>${releaseRepoUrl}</url>
 		</repository>
