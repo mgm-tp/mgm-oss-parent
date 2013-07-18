@@ -50,6 +50,11 @@
 			<name>snapshots</name>
 			<url>${snapshotRepoUrl}</url>
 		</snapshotRepository>
+		<repository>
+			<id>${releaseRepoId}</id>
+			<name>releases</name>
+			<url>${releaseRepoUrl}</url>
+		</repository>
 	</distributionManagement>
 
 	<licenses>
