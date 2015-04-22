@@ -18,11 +18,6 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>
 	<groupId>com.mgmtp.maven.poms</groupId>
 	<artifactId>mgm-oss-parent</artifactId>
 	<packaging>pom</packaging>
@@ -69,7 +64,6 @@
 		<developer>
 			<id>unguiculus</id>
 			<name>Reinhard Nägele</name>
-			<email>Reinhard.Naegele@mgm-tp.com</email>
 			<organization>mgm technology partners GmbH</organization>
 			<organizationUrl>http://www.mgm-tp.com</organizationUrl>
 			<timezone>Europe/Berlin</timezone>
@@ -77,7 +71,6 @@
 		<developer>
 			<id>mvarendo</id>
 			<name>Martin Varendorff</name>
-			<email>Martin.Varendorff@mgm-tp.com</email>
 			<organization>mgm technology partners GmbH</organization>
 			<organizationUrl>http://www.mgm-tp.com</organizationUrl>
 			<timezone>Europe/Berlin</timezone>
@@ -92,13 +85,11 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>com.mycila.maven-license-plugin</groupId>
-					<artifactId>maven-license-plugin</artifactId>
-					<version>1.10.b1</version>
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>2.11</version>
 					<configuration>
 						<header>${project.build.directory}/maven-shared-archive-resources/META-INF/copyright_header</header>
-						<encoding>UTF-8</encoding>
-						<strictCheck>true</strictCheck>
 						<excludes>
 							<exclude>**/*.txt</exclude>
 							<exclude>.maven/**</exclude>
@@ -109,9 +100,7 @@
 						</excludes>
 						<mapping>
 							<java>SLASHSTAR_STYLE</java>
-							<groovy>SLASHSTAR_STYLE</groovy>
 							<gradle>SLASHSTAR_STYLE</gradle>
-							<gant>SLASHSTAR_STYLE</gant>
 							<props>SCRIPT_STYLE</props>
 						</mapping>
 					</configuration>
@@ -139,8 +128,8 @@
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>com.mycila.maven-license-plugin</groupId>
-										<artifactId>maven-license-plugin</artifactId>
+										<groupId>com.mycila</groupId>
+										<artifactId>license-maven-plugin</artifactId>
 										<versionRange>[1.0,)</versionRange>
 										<goals>
 											<goal>format</goal>
@@ -173,12 +162,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>2.5</version>
+					<version>2.6.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+					<version>3.3</version>
 					<configuration>
 						<source>1.7</source>
 						<target>1.7</target>
@@ -189,7 +178,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.7</version>
+					<version>2.8.2</version>
 					<configuration>
 						<updateReleaseInfo>true</updateReleaseInfo>
 						<retryFailedDeploymentCount>3</retryFailedDeploymentCount>
@@ -197,13 +186,18 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.6</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>2.4</version>
+					<version>2.5.2</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.4</version>
+					<version>2.6</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -220,7 +214,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${javadoc.plugin.version}</version>
+					<version>2.9.1</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -241,7 +235,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
-					<version>2.4.1</version>
+					<version>2.5.1</version>
 					<configuration>
 						<autoVersionSubmodules>true</autoVersionSubmodules>
 						<suppressCommitBeforeBranch>true</suppressCommitBeforeBranch>
@@ -252,7 +246,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.6</version>
+					<version>2.7</version>
 					<configuration>
 						<delimiters>
 							<delimiter>${*}</delimiter>
@@ -263,12 +257,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.3</version>
+					<version>3.4</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>${source.plugin.version}</version>
+					<version>2.4</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -285,12 +279,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.15</version>
+					<version>2.18.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>2.4</version>
+					<version>2.6</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -304,6 +298,21 @@
 						</archive>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>buildnumber-maven-plugin</artifactId>
+					<version>1.3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>1.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-remote-resources-plugin</artifactId>
+					<version>1.5</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -311,7 +320,6 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.2</version>
 				<configuration>
 					<buildNumberPropertyName>revision</buildNumberPropertyName>
 					<timestampPropertyName>timestamp</timestampPropertyName>
@@ -332,7 +340,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>1.3.1</version>
 				<executions>
 					<execution>
 						<id>enforce-maven</id>
@@ -365,7 +372,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-remote-resources-plugin</artifactId>
-				<version>1.4</version>
 				<executions>
 					<execution>
 						<id>include-license-resources</id>
@@ -412,22 +418,40 @@
 
 	<profiles>
 		<profile>
-			<!--
-				Override plugin versions of Sonatype profile. This needs to be done
-				here because profiles are not inherited.
-			-->
-			<id>sonatype-oss-release</id>
+			<id>attachJavadocs</id>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>${source.plugin.version}</version>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>signArtifacts</id>
+			<build>
+				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>${javadoc.plugin.version}</version>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
@@ -458,7 +482,7 @@
 					<plugin>
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>${jacoco.version}</version>
+						<version>0.7.4.201502262128</version>
 						<executions>
 							<execution>
 								<id>prepare-jacoco-agent</id>
@@ -474,7 +498,6 @@
 				</plugins>
 			</build>
 			<properties>
-				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 				<sonar.surefire.reportsPath>${project.build.directory}/surefire-reports</sonar.surefire.reportsPath>
 				<sonar.jacoco.reportPath>${project.build.directory}/jacoco-unit.exec</sonar.jacoco.reportPath>
 				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
@@ -485,8 +508,8 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>com.mycila.maven-license-plugin</groupId>
-						<artifactId>maven-license-plugin</artifactId>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
 						<executions>
 							<execution>
 								<id>add-license</id>
@@ -505,8 +528,8 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>com.mycila.maven-license-plugin</groupId>
-						<artifactId>maven-license-plugin</artifactId>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
 						<executions>
 							<execution>
 								<id>check-license</id>
@@ -525,8 +548,8 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>com.mycila.maven-license-plugin</groupId>
-						<artifactId>maven-license-plugin</artifactId>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
 						<executions>
 							<execution>
 								<id>remove-license</id>
@@ -545,9 +568,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<jacoco.version>0.6.3.201306030806</jacoco.version>
-		<source.plugin.version>2.2.1</source.plugin.version>
-		<javadoc.plugin.version>2.9.1</javadoc.plugin.version>
 		<mgm-oss-jar-resource-bundle.version>2</mgm-oss-jar-resource-bundle.version>
 	</properties>
 </project>
