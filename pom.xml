@@ -62,15 +62,7 @@
 
 	<developers>
 		<developer>
-			<id>unguiculus</id>
-			<name>Reinhard Nägele</name>
-			<organization>mgm technology partners GmbH</organization>
-			<organizationUrl>http://www.mgm-tp.com</organizationUrl>
-			<timezone>Europe/Berlin</timezone>
-		</developer>
-		<developer>
-			<id>mvarendo</id>
-			<name>Martin Varendorff</name>
+			<id>mgm_oss</id>
 			<organization>mgm technology partners GmbH</organization>
 			<organizationUrl>http://www.mgm-tp.com</organizationUrl>
 			<timezone>Europe/Berlin</timezone>
@@ -106,60 +98,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<!-- This tells m2e to ignore plugin executions in order to get rid of warnings in Eclipse. -->
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-enforcer-plugin</artifactId>
-										<versionRange>[1.0,)</versionRange>
-										<goals>
-											<goal>enforce</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>com.mycila</groupId>
-										<artifactId>license-maven-plugin</artifactId>
-										<versionRange>[1.0,)</versionRange>
-										<goals>
-											<goal>format</goal>
-											<goal>check</goal>
-											<goal>remove</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-remote-resources-plugin</artifactId>
-										<versionRange>[1.4,)</versionRange>
-										<goals>
-											<goal>bundle</goal>
-											<goal>process</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>2.6.1</version>
@@ -182,6 +120,40 @@
 					<configuration>
 						<updateReleaseInfo>true</updateReleaseInfo>
 						<retryFailedDeploymentCount>3</retryFailedDeploymentCount>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>2.10</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							</manifest>
+							<manifestEntries>
+								<Implementation-Date>${timestamp}</Implementation-Date>
+								<Implementation-Revision>${revision}</Implementation-Revision>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>2.5.1</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							</manifest>
+							<manifestEntries>
+								<Implementation-Date>${timestamp}</Implementation-Date>
+								<Implementation-Revision>${revision}</Implementation-Revision>
+							</manifestEntries>
+						</archive>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -214,7 +186,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.9.1</version>
+					<version>2.10.3</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -227,20 +199,22 @@
 							</manifestEntries>
 						</archive>
 						<links>
-							<link>http://docs.oracle.com/javase/6/docs/api/</link>
+							<link>http://docs.oracle.com/javase/7/docs/api/</link>
 						</links>
-						<bottom><![CDATA[Copyright (c) 2013 mgm technology partners GmbH]]></bottom>
+						<bottom><![CDATA[Copyright (c) 2015 mgm technology partners GmbH]]></bottom>
 					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.1</version>
+					<version>2.5.2</version>
 					<configuration>
 						<autoVersionSubmodules>true</autoVersionSubmodules>
 						<suppressCommitBeforeBranch>true</suppressCommitBeforeBranch>
 						<goals>deploy</goals>
 						<preparationGoals>verify</preparationGoals>
+						<username>${env.SCM_USER}</username>
+						<password>${env.SCM_PASSWORD}</password>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -313,6 +287,25 @@
 					<artifactId>maven-remote-resources-plugin</artifactId>
 					<version>1.5</version>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>1.9.4</version>
+					<configuration>
+						<username>${env.SCM_USER}</username>
+						<password>${env.SCM_PASSWORD}</password>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.gmavenplus</groupId>
+					<artifactId>gmavenplus-plugin</artifactId>
+					<version>1.5</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -326,6 +319,11 @@
 					<timestampFormat>{0,date,yyyy-MM-dd'T'HH:mm:ssZZ}</timestampFormat>
 					<getRevisionOnlyOnce>true</getRevisionOnlyOnce>
 					<shortRevisionLength>7</shortRevisionLength>
+					<providerImplementations>
+						<svn>svn</svn>
+					</providerImplementations>
+					<username>${env.SCM_USER}</username>
+					<password>${env.SCM_PASSWORD}</password>
 				</configuration>
 				<executions>
 					<execution>
@@ -365,50 +363,6 @@
 									<message>Versions for all plugins must be defined in pom.xml!</message>
 								</requirePluginVersions>
 							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-remote-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>include-license-resources</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>process</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<resourceBundles>
-						<resourceBundle>com.mgmtp.maven.resources:mgm-oss-jar-resource-bundle:${mgm-oss-jar-resource-bundle.version}</resourceBundle>
-					</resourceBundles>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-license-files-to-basedir</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>${project.build.directory}/maven-shared-archive-resources/META-INF</directory>
-									<filtering>false</filtering>
-									<includes>
-										<include>LICENSE</include>
-										<include>NOTICE</include>
-									</includes>
-								</resource>
-							</resources>
-							<outputDirectory>${basedir}</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -504,6 +458,64 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>include-license</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-remote-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>include-license-resources</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>process</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<resourceBundles>
+								<resourceBundle>${license.bundle}</resourceBundle>
+							</resourceBundles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>copy-license-files</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-license-files-to-basedir</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/maven-shared-archive-resources/META-INF</directory>
+											<filtering>false</filtering>
+											<includes>
+												<include>LICENSE</include>
+												<include>NOTICE</include>
+											</includes>
+										</resource>
+									</resources>
+									<outputDirectory>${basedir}</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>add-license-headers</id>
 			<build>
 				<plugins>
@@ -563,11 +575,98 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>update-versions</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.gmavenplus</groupId>
+						<artifactId>gmavenplus-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>next-snapshot</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<properties>
+										<versionType>${version.type}</versionType>
+										<nextVersion>${nextVersion}</nextVersion>
+									</properties>
+									<scripts>
+										<script>
+											<![CDATA[
+												import org.apache.maven.shared.release.versions.VersionInfo
+												import org.apache.maven.shared.release.versions.DefaultVersionInfo
+												
+												VersionInfo versionInfo = new DefaultVersionInfo(project.version)
+												if (nextVersion) {
+													log.info 'Using new version from property'
+												} else {
+													versionType = versionType ?: 'snapshot'
+													log.info "Version type for new version: $versionType"
+													if ('release'.equals(versionType)) {
+														if (versionInfo.snapshot) {
+															nextVersion = versionInfo.getReleaseVersionString()
+														} else {
+															nextVersion = versionInfo.getNextVersion().getReleaseVersionString()
+														}
+													} else {
+														nextVersion = versionInfo.getNextVersion().getSnapshotVersionString()
+													}
+												}
+
+												// set property for versions plugin
+												project.properties['newVersion'] = nextVersion
+
+												log.info "Next version: $nextVersion"
+												new File('.ci-version').write(nextVersion)
+											]]>
+										</script>
+									</scripts>
+								</configuration>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>org.codehaus.groovy</groupId>
+								<artifactId>groovy-all</artifactId>
+								<version>${update-versions.groovy.version}</version>
+								<scope>runtime</scope>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.maven.release</groupId>
+								<artifactId>maven-release-manager</artifactId>
+								<version>2.5.2</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>versions-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>set-new-version</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>set</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<generateBackupPoms>false</generateBackupPoms>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<mgm-oss-jar-resource-bundle.version>2</mgm-oss-jar-resource-bundle.version>
+		<license.bundle>com.mgmtp.maven.resources:mgm-oss-jar-resource-bundle:2</license.bundle>
+		<update-versions.groovy.version>2.4.3</update-versions.groovy.version>
 	</properties>
 </project>
