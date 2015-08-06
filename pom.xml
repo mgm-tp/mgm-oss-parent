@@ -120,6 +120,7 @@
 					<configuration>
 						<updateReleaseInfo>true</updateReleaseInfo>
 						<retryFailedDeploymentCount>3</retryFailedDeploymentCount>
+						<deployAtEnd>true</deployAtEnd>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -165,6 +166,9 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>2.5.2</version>
+					<configuration>
+						<deployAtEnd>true</deployAtEnd>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
