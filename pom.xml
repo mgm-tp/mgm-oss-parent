@@ -94,6 +94,8 @@
 							<java>SLASHSTAR_STYLE</java>
 							<gradle>SLASHSTAR_STYLE</gradle>
 							<props>SCRIPT_STYLE</props>
+							<scss>SLASHSTAR_STYLE</scss>
+							<ts>SLASHSTAR_STYLE</ts>
 						</mapping>
 					</configuration>
 				</plugin>
