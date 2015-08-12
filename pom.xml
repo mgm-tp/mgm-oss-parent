@@ -629,6 +629,7 @@
 									<properties>
 										<versionType>${version.type}</versionType>
 										<nextVersion>${nextVersion}</nextVersion>
+										<appendJenkinsBuildNumber>${appendJenkinsBuildNumber}</appendJenkinsBuildNumber>
 									</properties>
 									<scripts>
 										<script>
@@ -643,11 +644,8 @@
 													versionType = versionType ?: 'snapshot'
 													log.info "Version type for new version: $versionType"
 													if ('release'.equals(versionType)) {
-														if (versionInfo.snapshot) {
-															nextVersion = versionInfo.getReleaseVersionString()
-														} else {
-															nextVersion = versionInfo.getNextVersion().getReleaseVersionString()
-														}
+														def relVersion = versionInfo.getReleaseVersionString()
+														nextVersion = appendJenkinsBuildNumber ? relVersion + '-' + System.getenv().'BUILD_NUMBER' : relVersion
 													} else {
 														nextVersion = versionInfo.getNextVersion().getSnapshotVersionString()
 													}
