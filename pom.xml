@@ -21,7 +21,7 @@
 	<groupId>com.mgmtp.maven.poms</groupId>
 	<artifactId>mgm-oss-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>14-SNAPSHOT</version>
+	<version>15-SNAPSHOT</version>
 	<name>mgm Maven OSS Parent POM</name>
 	<description>mgm Maven OSS Parent POM</description>
 
@@ -70,7 +70,7 @@
 	</developers>
 
 	<prerequisites>
-		<maven>3.0</maven>
+		<maven>3.3</maven>
 	</prerequisites>
 
 	<build>
@@ -80,6 +80,31 @@
 					<groupId>org.jfrog.buildinfo</groupId>
 					<artifactId>artifactory-maven-plugin</artifactId>
 					<version>2.4.1</version>
+					<configuration>
+						<publisher>
+							<contextUrl>${env.ARTIFACTORY_URL}</contextUrl>
+							<username>${env.ARTIFACTORY_USER}</username>
+							<password>${env.ARTIFACTORY_PASSWORD}</password>
+							<repoKey>maven-releases</repoKey>
+							<snapshotRepoKey>maven-snapshots</snapshotRepoKey>
+						</publisher>
+						<artifactory>
+							<includeEnvVars>false</includeEnvVars>
+						</artifactory>
+						<buildInfo>
+							<buildName>${project.groupId}:${project.artifactId}</buildName>
+							<buildNumber>${project.version}</buildNumber>
+							<buildUrl>${env.BUILD_URL}</buildUrl>
+						</buildInfo>
+					</configuration>
+					<executions>
+						<execution>
+							<id>build-info</id>
+							<goals>
+								<goal>publish</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>com.mycila</groupId>
@@ -703,37 +728,31 @@
 			</build>
 		</profile>
 		<profile>
+			<id>buildinfo</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jfrog.buildinfo</groupId>
+						<artifactId>artifactory-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<installAtEnd>false</installAtEnd>
+			</properties>
+		</profile>
+		<profile>
 			<id>staging</id>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.jfrog.buildinfo</groupId>
 						<artifactId>artifactory-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>build-info</id>
-								<goals>
-									<goal>publish</goal>
-								</goals>
-								<configuration>
-									<publisher>
-										<contextUrl>https://artifacts.mgm-tp.com/artifactory</contextUrl>
-										<username>${env.ARTIFACTORY_USER}</username>
-										<password>${env.ARTIFACTORY_PASSWORD}</password>
-										<repoKey>maven-staging</repoKey>
-										<snapshotRepoKey>maven-snapshots</snapshotRepoKey>
-									</publisher>
-									<artifactory>
-										<includeEnvVars>false</includeEnvVars>
-									</artifactory>
-									<buildInfo>
-										<buildName>${project.groupId}:${project.artifactId}</buildName>
-										<buildNumber>${project.version}</buildNumber>
-										<buildUrl>${env.BUILD_URL}</buildUrl>
-									</buildInfo>
-								</configuration>
-							</execution>
-						</executions>
+						<configuration>
+							<publisher>
+								<repoKey>maven-staging</repoKey>
+							</publisher>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
