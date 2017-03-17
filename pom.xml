@@ -21,7 +21,7 @@
 	<groupId>com.mgmtp.maven.poms</groupId>
 	<artifactId>mgm-oss-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>17-SNAPSHOT</version>
+	<version>17</version>
 	<name>mgm Maven OSS Parent POM</name>
 	<description>mgm Maven OSS Parent POM</description>
 
@@ -474,7 +474,7 @@
 					<plugin>
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.7.6.201602180812</version>
+						<version>0.7.9</version>
 						<executions>
 							<execution>
 								<id>prepare-jacoco-agent</id>
