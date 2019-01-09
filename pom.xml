@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2016 mgm technology partners GmbH
+    Copyright (c) 2019 mgm technology partners GmbH
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 	<groupId>com.mgmtp.maven.poms</groupId>
 	<artifactId>mgm-oss-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>18-SNAPSHOT</version>
+	<version>19-SNAPSHOT</version>
 	<name>mgm Maven OSS Parent POM</name>
 	<description>mgm Maven OSS Parent POM</description>
 
@@ -79,7 +79,7 @@
 				<plugin>
 					<groupId>org.jfrog.buildinfo</groupId>
 					<artifactId>artifactory-maven-plugin</artifactId>
-					<version>2.4.1</version>
+					<version>2.6.1</version>
 					<configuration>
 						<publisher>
 							<contextUrl>${env.ARTIFACTORY_URL}</contextUrl>
@@ -109,7 +109,7 @@
 				<plugin>
 					<groupId>com.mycila</groupId>
 					<artifactId>license-maven-plugin</artifactId>
-					<version>2.11</version>
+					<version>3.0</version>
 					<configuration>
 						<header>${project.build.directory}/maven-shared-archive-resources/META-INF/copyright_header</header>
 						<skipExistingHeaders>true</skipExistingHeaders>
@@ -134,15 +134,15 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>3.1.0</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.5.1</version>
+					<version>3.8.0</version>
 					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>11</source>
+						<target>11</target>
 						<showDeprecation>true</showDeprecation>
 						<showWarnings>true</showWarnings>
 					</configuration>
@@ -160,7 +160,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-ear-plugin</artifactId>
-					<version>2.10.1</version>
+					<version>3.0.1</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -177,7 +177,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-ejb-plugin</artifactId>
-					<version>2.5.1</version>
+					<version>3.0.1</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -190,6 +190,11 @@
 							</manifestEntries>
 						</archive>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.1.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -207,7 +212,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.6</version>
+					<version>3.1.1</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -224,7 +229,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.10.3</version>
+					<version>3.0.1</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -237,9 +242,9 @@
 							</manifestEntries>
 						</archive>
 						<links>
-							<link>http://docs.oracle.com/javase/7/docs/api/</link>
+							<link>https://docs.oracle.com/en/java/javase/11/docs/api</link>
 						</links>
-						<bottom><![CDATA[Copyright (c) 2015 mgm technology partners GmbH]]></bottom>
+						<bottom><![CDATA[Copyright (c) 2019 mgm technology partners GmbH]]></bottom>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -258,7 +263,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.7</version>
+					<version>3.1.0</version>
 					<configuration>
 						<delimiters>
 							<delimiter>${*}</delimiter>
@@ -269,12 +274,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.5</version>
+					<version>3.7.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>3.0.1</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -296,7 +301,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>2.6</version>
+					<version>3.2.2</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -323,7 +328,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-remote-resources-plugin</artifactId>
-					<version>1.5</version>
+					<version>1.6</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -342,7 +347,7 @@
 				<plugin>
 					<groupId>org.codehaus.gmavenplus</groupId>
 					<artifactId>gmavenplus-plugin</artifactId>
-					<version>1.5</version>
+					<version>1.6.2</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -704,7 +709,7 @@
 							<dependency>
 								<groupId>org.apache.maven.release</groupId>
 								<artifactId>maven-release-manager</artifactId>
-								<version>2.5.2</version>
+								<version>2.5.3</version>
 							</dependency>
 						</dependencies>
 					</plugin>
@@ -766,7 +771,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<license.bundle>com.mgmtp.maven.resources:mgm-oss-jar-resource-bundle:2</license.bundle>
-		<update-versions.groovy.version>2.4.3</update-versions.groovy.version>
+		<update-versions.groovy.version>2.5.3</update-versions.groovy.version>
 		<installAtEnd>false</installAtEnd>
 		<deployAtEnd>true</deployAtEnd>
 	</properties>
