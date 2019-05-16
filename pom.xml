@@ -21,7 +21,7 @@
 	<groupId>com.mgmtp.maven.poms</groupId>
 	<artifactId>mgm-oss-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>20-SNAPSHOT</version>
+	<version>20</version>
 	<name>mgm Maven OSS Parent POM</name>
 	<description>mgm Maven OSS Parent POM</description>
 
