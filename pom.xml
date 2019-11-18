@@ -79,7 +79,7 @@
 				<plugin>
 					<groupId>org.jfrog.buildinfo</groupId>
 					<artifactId>artifactory-maven-plugin</artifactId>
-					<version>2.6.1</version>
+					<version>2.7.0</version>
 					<configuration>
 						<publisher>
 							<contextUrl>${env.ARTIFACTORY_URL}</contextUrl>
@@ -150,7 +150,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>3.0.0-M1</version>
+					<version>2.8.2</version>
 					<configuration>
 						<updateReleaseInfo>true</updateReleaseInfo>
 						<retryFailedDeploymentCount>3</retryFailedDeploymentCount>
@@ -204,7 +204,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>3.0.0-M1</version>
+					<version>2.5.2</version>
 					<configuration>
 						<installAtEnd>${installAtEnd}</installAtEnd>
 					</configuration>
@@ -296,7 +296,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M3</version>
+					<version>2.22.2</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -323,7 +323,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>3.0.0-M2</version>
+					<version>1.4.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -739,6 +739,7 @@
 					<plugin>
 						<groupId>org.jfrog.buildinfo</groupId>
 						<artifactId>artifactory-maven-plugin</artifactId>
+						<version>2.7.0</version>
 					</plugin>
 				</plugins>
 			</build>
@@ -753,6 +754,7 @@
 					<plugin>
 						<groupId>org.jfrog.buildinfo</groupId>
 						<artifactId>artifactory-maven-plugin</artifactId>
+						<version>2.7.0</version>
 						<configuration>
 							<publisher>
 								<repoKey>maven-staging</repoKey>
