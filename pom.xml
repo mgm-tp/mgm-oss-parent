@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2019 mgm technology partners GmbH
+    Copyright (c) 2020 mgm technology partners GmbH
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -68,10 +68,6 @@
 			<timezone>Europe/Berlin</timezone>
 		</developer>
 	</developers>
-
-	<prerequisites>
-		<maven>3.3.9</maven>
-	</prerequisites>
 
 	<build>
 		<pluginManagement>
@@ -487,8 +483,15 @@
 									<goal>prepare-agent</goal>
 								</goals>
 								<configuration>
-									<destFile>${sonar.jacoco.reportPath}</destFile>
+									<destFile>${sonar.coverage.jacoco.xmlReportPaths}</destFile>
 								</configuration>
+							</execution>
+							<execution>
+								<id>report</id>
+								<phase>test</phase>
+								<goals>
+									<goal>report</goal>
+								</goals>
 							</execution>
 						</executions>
 					</plugin>
@@ -496,7 +499,7 @@
 			</build>
 			<properties>
 				<sonar.surefire.reportsPath>${project.build.directory}/surefire-reports</sonar.surefire.reportsPath>
-				<sonar.jacoco.reportPath>${project.build.directory}/jacoco-unit.exec</sonar.jacoco.reportPath>
+				<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 			</properties>
 		</profile>
