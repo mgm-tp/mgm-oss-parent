@@ -9,7 +9,7 @@ pipeline {
         stage ('Build') {
             steps {
                 configFileProvider([
-					configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS_XML')
+					configFile(fileId: 'mgm-maven-settings', variable: 'MAVEN_SETTINGS_XML')
 				]) {
                     sh 'mvn clean install -s $MAVEN_SETTINGS_XML'
                 } 
