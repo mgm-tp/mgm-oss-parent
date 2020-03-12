@@ -8,13 +8,13 @@ pipeline {
     
         stage ('Build') {
             steps {
-                sh 'mvn clean install' 
+                configFileProvider([
+					configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS_XML')
+				]) {
+                    sh 'mvn clean install -s $MAVEN_SETTINGS_XML'
+                } 
             }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
+            
         }
     }
 }
