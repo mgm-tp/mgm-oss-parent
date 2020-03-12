@@ -1,17 +1,14 @@
 pipeline {
-    agent any
-    tools {
-        maven 'Maven 3'
-        jdk 'OpenJDK 11'
+    agent {
+        label {
+                label "Build Slave"
+        }
     }
-    stages {
-    
+    stages { 
         stage ('Build') {
             steps {
-                configFileProvider([
-					configFile(fileId: 'mgm-maven-settings', variable: 'MAVEN_SETTINGS_XML')
-				]) {
-                    sh 'mvn clean install -s $MAVEN_SETTINGS_XML'
+                withMaven(globalMavenSettingsConfig: 'mgm-maven-settings', jdk: 'OpenJDK 11', maven: 'Maven 3')  {
+                    sh 'mvn clean install'
                 } 
             }
             
